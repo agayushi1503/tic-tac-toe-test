@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tic-Tac-Toe</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+  <h1>Tic-Tac-Toe</h1>
+  {% if flash %}
+    <div class="flash">{{ flash }}</div>
+  {% endif %}
+  <table>
+    {% for row in game_board %}
+      <tr>
+        {% for cell in row %}
+          <td id="{{ loop.index0 }}-{{ loop.index1 }}" onclick="makeMove({{ loop.index0 }}, {{ loop.index1 }})">{{ cell }}</td>
+        {% endfor %}
+      </tr>
+    {% endfor %}
+  </table>
+  <p>Current player: {{ current_player }}</p>
+</body>
+</html>
